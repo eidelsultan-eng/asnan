@@ -13,15 +13,35 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#12376e">
 </head>
 
 <body>
     <div class="bg-particles" id="particles"></div>
     <header class="header">
+        <div class="top-bar">
+            <div class="container top-bar-content">
+                <div class="top-info">
+                    <a href="tel:01234567890"><i class="fas fa-phone"></i> 0123 456 7890</a>
+                    <a href="mailto:info@drghadermagdy.com"><i class="fas fa-envelope"></i> info@drghadermagdy.com</a>
+                </div>
+                <div class="top-actions">
+                    <button id="install-btn" class="btn-install" style="display: none;">
+                        <i class="fas fa-mobile-alt"></i> تثبيت التطبيق
+                    </button>
+                    <div class="social-mini">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="nav container">
             <div class="logo">
                 <img src="logo.png" alt="د. غدير مجدي">
-                <span class="logo-name">د. غدير مجدي</span>
+                <span class="logo-name">Dr. Ghadir Magdy</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
@@ -42,16 +62,20 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="hero-bg">
-                <img src="hero.png" alt="العيادة">
+            <div class="video-background">
+                <video autoplay muted loop playsinline id="hero-video" poster="hero.png">
+                    <source src="hero.mp4" type="video/mp4">
+                </video>
             </div>
             <div class="container hero-content">
-                <h1 class="fade-up">ابتسامتك هي <span class="highlight">تخصصنا الوحيد</span></h1>
-                <p class="fade-up" style="transition-delay: 0.2s;">نقدم لك أدق حلول تقويم الأسنان في عيادة الدكتورة غدير
-                    مجدي، حيث نركز حصرياً على رسم الابتسامات المتناسقة باستخدام أحدث التقنيات العالمية.</p>
+                <h1 class="fade-up luxury-font">Smile with Confidence</h1>
+                <p class="fade-up subtitle-en" style="transition-delay: 0.2s;">Orthodontics & Dentofacial Orthopedics by
+                    Dr. Ghadir Magdy
+                </p>
                 <div class="hero-btns fade-up" style="transition-delay: 0.4s;">
-                    <a href="#contact" class="btn btn-primary btn-lg">احجز استشارة الآن</a>
-                    <a href="#services" class="btn btn-outline btn-lg">اكتشف خدماتنا</a>
+                    <a href="#contact" class="btn btn-primary btn-lg">احجز موعدك الآن</a>
+                    <a href="#tech" class="btn btn-outline btn-lg" style="border-color: white; color: white;">أحدث
+                        التقنيات</a>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -60,7 +84,7 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="stats container">
+        <section class="stats container luxury-bg">
             <div class="stat-item fade-in">
                 <span class="number">+15</span>
                 <span class="label">سنة خبرة</span>
@@ -76,36 +100,39 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about container">
-            <div class="about-grid">
-                <div class="about-image reveal-left">
-                    <div class="image-wrapper">
-                        <img src="doctor.png" alt="د. غدير مجدي">
-                        <div class="experience-badge">
-                            <span>15+</span>
-                            <span>عام من الخبرة</span>
+        <section id="about" class="about luxury-bg">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal-left">
+                        <div class="image-wrapper">
+                            <img src="doctor.png" alt="د. غدير مجدي">
+                            <div class="experience-badge">
+                                <span>15+</span>
+                                <span>عام من الخبرة</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="about-text reveal-right">
+                        <span class="section-tag">من نحن</span>
+                        <h2>د. غدير مجدي</h2>
+                        <p class="subtitle">أخصائية تقويم الأسنان والفكين</p>
+                        <p>تنفرد الدكتورة غدير مجدي بتخصصها الدقيق في تقويم الأسنان، مما يضمن للمرضى الحصول على أعلى
+                            مستويات
+                            الدقة والنتائج المثالية. نؤمن بأن تقويم الأسنان هو مزيج بين العلم والفن لإعادة الثقة
+                            والوظيفة
+                            لابتسامتك.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> استخدام أحدث أجهزة الليزر والأشعة.</li>
+                            <li><i class="fas fa-check-circle"></i> تعقيم فائق الجودة وفق المعايير العالمية.</li>
+                            <li><i class="fas fa-check-circle"></i> فريق طبي متخصص ومدرب على أعلى مستوى.</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">تعرف علينا أكثر</a>
+                    </div>
                 </div>
-                <div class="about-text reveal-right">
-                    <span class="section-tag">من نحن</span>
-                    <h2>د. غدير مجدي</h2>
-                    <p class="subtitle">أخصائية تقويم الأسنان والفكين</p>
-                    <p>تنفرد الدكتورة غدير مجدي بتخصصها الدقيق في تقويم الأسنان، مما يضمن للمرضى الحصول على أعلى مستويات
-                        الدقة والنتائج المثالية. نؤمن بأن تقويم الأسنان هو مزيج بين العلم والفن لإعادة الثقة والوظيفة
-                        لابتسامتك.</p>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check-circle"></i> استخدام أحدث أجهزة الليزر والأشعة.</li>
-                        <li><i class="fas fa-check-circle"></i> تعقيم فائق الجودة وفق المعايير العالمية.</li>
-                        <li><i class="fas fa-check-circle"></i> فريق طبي متخصص ومدرب على أعلى مستوى.</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">تعرف علينا أكثر</a>
-                </div>
-            </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="services">
+        <section id="services" class="services luxury-bg">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">خدماتنا</span>
@@ -213,60 +240,61 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact container">
-            <div class="contact-grid">
-                <div class="contact-info reveal-left">
-                    <span class="section-tag">اتصل بنا</span>
-                    <h2>تواصل معنا اليوم</h2>
-                    <p>نحن هنا لمساعدتك والإجابة على جميع استفساراتك</p>
-                    <div class="contact-methods">
-                        <div class="method-item">
-                            <div class="icon"><i class="fas fa-phone-alt"></i></div>
-                            <div>
-                                <h3>رقم الهاتف</h3>
-                                <p>0123 456 7890</p>
+        <section id="contact" class="contact luxury-bg">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info reveal-left">
+                        <span class="section-tag">اتصل بنا</span>
+                        <h2>تواصل معنا اليوم</h2>
+                        <p>نحن هنا لمساعدتك والإجابة على جميع استفساراتك</p>
+                        <div class="contact-methods">
+                            <div class="method-item">
+                                <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <h3>رقم الهاتف</h3>
+                                    <p>0123 456 7890</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="method-item">
-                            <div class="icon"><i class="fas fa-location-dot"></i></div>
-                            <div>
-                                <h3>الموقع</h3>
-                                <p>القاهرة، مدينة نصر، شارع الطيران</p>
+                            <div class="method-item">
+                                <div class="icon"><i class="fas fa-location-dot"></i></div>
+                                <div>
+                                    <h3>الموقع</h3>
+                                    <p>القاهرة، مدينة نصر، شارع الطيران</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="method-item">
-                            <div class="icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h3>البريد الإلكتروني</h3>
-                                <p>info@drghadermagdy.com</p>
+                            <div class="method-item">
+                                <div class="icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <h3>البريد الإلكتروني</h3>
+                                    <p>info@drghadermagdy.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="contact-form reveal-right">
+                        <form id="appointment-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="الاسم الكامل" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="رقم الهاتف" required>
+                            </div>
+                            <div class="form-group">
+                                <select required>
+                                    <option value="" disabled selected>نوع الخدمة</option>
+                                    <option value="braces">تقويم الأسنان</option>
+                                    <option value="aligners">التقويم الشفاف</option>
+                                    <option value="checkup">استشارة تخصصية</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="رسالتك أو ملاحظاتك" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">إرسال الطلب</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="contact-form reveal-right">
-                    <form id="appointment-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="الاسم الكامل" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="رقم الهاتف" required>
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>نوع الخدمة</option>
-                                <option value="checkup">كشف دوري</option>
-                                <option value="implant">زراعة أسنان</option>
-                                <option value="whitening">تبييض أسنان</option>
-                                <option value="other">أخرى</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="رسالتك أو ملاحظاتك" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">إرسال الطلب</button>
-                    </form>
-                </div>
-            </div>
         </section>
     </main>
 
