@@ -297,15 +297,7 @@ h3 {
     gap: 1rem;
 }
 
-.social-mini a {
-    opacity: 0.8;
-    transition: var(--transition);
-}
 
-.social-mini a:hover {
-    opacity: 1;
-    color: var(--accent);
-}
 
 .nav {
     display: flex;
@@ -703,6 +695,23 @@ h3 {
     display: flex;
     gap: 1.5rem;
     margin-top: 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+
+.method-item:hover {
+    background: rgba(196, 161, 99, 0.05);
+    transform: translateX(-10px);
+}
+
+.method-item:hover .icon {
+    background: var(--accent);
+    color: var(--white);
+    transform: scale(1.1);
 }
 
 .method-item .icon {
@@ -753,6 +762,11 @@ textarea:focus {
 .btn-block {
     width: 100%;
     justify-content: center;
+}
+
+.success-btn {
+    background: #25d366 !important;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3) !important;
 }
 
 /* Footer */
@@ -821,6 +835,36 @@ textarea:focus {
 .social-icons a:hover {
     background: var(--primary);
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(18, 55, 110, 0.2);
+}
+
+.social-icons a[href*="tiktok"]:hover,
+.social-mini a[href*="tiktok"]:hover {
+    background: #000000 !important;
+    color: #fff !important;
+    text-shadow: 2px 0 0 #fe2c55, -2px 0 0 #25f4ee;
+    box-shadow: 0 0 15px rgba(254, 44, 85, 0.5);
+}
+
+.social-mini a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.social-mini a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    background: var(--accent);
+    color: var(--white);
 }
 
 .footer-bottom {
@@ -863,8 +907,63 @@ textarea:focus {
 }
 
 .visible {
-    opacity: 1;
-    transform: translate(0) perspective(1000px) rotateY(0) !important;
+    opacity: 1 !important;
+    transform: translate(0) scale(1) perspective(1000px) rotateY(0) !important;
+}
+
+/* Flying/Entrance animations enhancement */
+.reveal-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-up {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.floating-img {
+    animation: floatingEffect 4s ease-in-out infinite;
+}
+
+@keyframes floatingEffect {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+.hero h1 {
+    min-height: 1.2em;
+    /* Prevent layout shift during typing */
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    100% {
+        border-color: var(--accent);
+    }
+
+    50% {
+        border-color: transparent;
+    }
 }
 
 .service-card {

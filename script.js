@@ -76,17 +76,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Intersection Observer for Reveal Animations
+    // Typing Effect for Hero Title
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+        const text = heroTitle.innerText;
+        heroTitle.innerText = '';
+        heroTitle.style.opacity = '1';
+        heroTitle.style.transform = 'none';
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                heroTitle.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        typeWriter();
+    }
+
+    // Enhanced Intersection Observer for Reveal Animations
     const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // If it's a number, we could trigger a count animation here
+
+                // Add staggered delay for children if needed
+                if (entry.target.classList.contains('services-grid') || entry.target.classList.contains('tech-grid')) {
+                    const children = entry.target.children;
+                    Array.from(children).forEach((child, index) => {
+                        child.style.transitionDelay = `${index * 0.1}s`;
+                        child.classList.add('visible');
+                    });
+                }
+
                 if (entry.target.classList.contains('stat-item')) {
                     animateValue(entry.target.querySelector('.number'));
                 }
@@ -94,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-up, .stat-item').forEach(el => {
+    document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-up, .stat-item, .services-grid, .tech-grid, .floating-img').forEach(el => {
         observer.observe(el);
     });
 
@@ -112,28 +140,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission Handling (Demo)
+    // Form Submission Handling (WhatsApp Redirect)
     const form = document.getElementById('appointment-form');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = btn.innerText;
 
-            btn.innerText = 'جاري الإرسال...';
-            btn.disabled = true;
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const message = document.getElementById('message').value;
+
+            const doctorNumber = '966549048646';
+            const whatsappText = `مرحباً د. غدير، لدي استفسار من الموقع:\n\n*الاسم:* ${name}\n*رقم الهاتف:* ${mobile}\n*الرسالة:* ${message}`;
+            const encodedText = encodeURIComponent(whatsappText);
+
+            const whatsappUrl = `https://wa.me/${doctorNumber}?text=${encodedText}`;
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+
+            // Visual feedback
+            const btn = form.querySelector('button');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = 'تم التوجيه للواتساب...';
+            btn.classList.add('success-btn');
 
             setTimeout(() => {
-                btn.innerText = 'تم الإرسال بنجاح!';
-                btn.style.background = '#4CAF50';
+                btn.innerHTML = originalContent;
+                btn.classList.remove('success-btn');
                 form.reset();
-
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1500);
+            }, 3000);
         });
     }
 
