@@ -205,6 +205,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Reviews Slider Logic
+const initSlider = () => {
+    const slider = document.querySelector('.reviews-slider');
+    const items = document.querySelectorAll('.review-item');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.slider-dots');
+
+    if (!slider || items.length === 0) return;
+
+    let currentIndex = 0;
+
+    // Create dots
+    items.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    const goToSlide = (index) => {
+        items[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+
+        currentIndex = index;
+        if (currentIndex < 0) currentIndex = items.length - 1;
+        if (currentIndex >= items.length) currentIndex = 0;
+
+        items[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // Auto slide
+    setInterval(() => goToSlide(currentIndex + 1), 5000);
+
+    // Set initial state
+    items[0].classList.add('active');
+};
+
+initSlider();
+
 // Hide Preloader on Window Load
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
