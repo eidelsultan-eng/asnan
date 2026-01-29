@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-up, .stat-item, .services-grid, .tech-grid, .floating-img').forEach(el => {
+    document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-up, .stat-item, .services-grid, .tech-grid, .reviews-grid, .floating-img').forEach(el => {
         observer.observe(el);
     });
 
@@ -202,5 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         requestAnimationFrame(update);
+    }
+});
+
+// Hide Preloader on Window Load
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 800);
     }
 });

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dr-ghadir-v1';
+const CACHE_NAME = 'dr-ghader-v1';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -9,7 +9,22 @@ const ASSETS_TO_CACHE = [
     '/doctor.png',
     '/aligners.png',
     '/braces.png',
-    '/jaw.png'
+    '/jaw.png',
+    '/dental_wallpaper.png',
+    '/review1.jpeg',
+    '/review2.jpeg',
+    '/review3.jpeg',
+    '/review4.jpeg',
+    '/review5.jpeg',
+    '/review6.jpeg',
+    '/review7.jpeg',
+    '/review8.jpeg',
+    '/review9.jpeg',
+    '/review10.jpeg',
+    '/review11.jpeg',
+    '/review12.jpeg',
+    '/review13.jpeg',
+    '/review14.jpeg'
 ];
 
 self.addEventListener('install', (event) => {
